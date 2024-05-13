@@ -7,6 +7,7 @@
 /* 
  * Add your BLAS implementation here
  */
+//oki
 double* my_solver(int N, double *A, double *B) {
 	printf("BLAS SOLVER\n");
 	return NULL;
