@@ -3,11 +3,22 @@
  * 2024 Spring
  */
 #include "utils.h"
+#include "func_neopt.c"
 
 /*
  * Add your unoptimized implementation here
  */
 double* my_solver(int N, double *A, double* B) {
-	printf("NEOPT SOLVER\n");
-	return NULL;
+	double* C;
+
+	double* A_T = transpose(N, A);
+	double* B_T = transpose(N, B);
+
+	double* first_calc = multiply_lower_with_normal(N, A_T, B);
+	double* first_calc_T = transpose(N, first_calc);
+
+	double* second_calc = sum(N, first_calc, first_calc_T);
+
+	C = multiply_normal(N, second_calc, B_T);
+	return C;
 }
