@@ -41,23 +41,39 @@ double* multiply_normal(int N, double *M1, double *M2) {
         return NULL;
     }
 
-    for (int i = 0; i < N; i++) {
+	for (int i = 0; i < N; i++) {
 		register double *orig_p1 = &M1[i * N];
-
         for (int j = 0; j < N; j++) {
 			register double *p1 = orig_p1;
 			register double *p2 = &M2[j];
             register double r = 0.0;
-
             for (int k = 0; k < N; k++) {
-                r += *p1 * *p2;
+				r += *p1 * *p2;
 				p1++;
 				p2 += N;
             }
-
 			R[i * N + j] = r;
         }
     }
+
+	// int blockSize = 40;
+
+	// for (int bi = 0; bi < N; bi += blockSize) {
+	// 	for (int bj = 0; bj < N; bj += blockSize) {
+	// 		for (int bk = 0; bk < N; bk += blockSize) {
+	// 			for (int i = 0; i < blockSize; i++) {
+	// 				for (int j = 0; j < blockSize; j++) {
+	// 					for (int k = 0; k < blockSize; k++) {
+	// 						register int idxR = (bi + i) * N + bj + j;
+	// 						register int idxLM = (bi + i) * N + bk + k;
+	// 						register int idxM = (bk + k) * N + bj + j;
+	// 						R[idxR] += M1[idxLM] * M2[idxM];
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
 
     return R;
 }
@@ -84,6 +100,25 @@ double* multiply_lower_with_normal(int N, double *LM, double *M) {
         }
     }
 
+	// int blockSize = 40;
+
+	// for (int bi = 0; bi < N; bi += blockSize) {
+	// 	for (int bj = 0; bj < N; bj += blockSize) {
+	// 		for (int bk = 0; bk < N; bk += blockSize) {
+	// 			for (int i = 0; i < blockSize; i++) {
+	// 				for (int j = 0; j < blockSize; j++) {
+	// 					for (int k = 0; k < blockSize; k++) {
+	// 						register int idxR = (bi + i) * N + bj + j;
+	// 						register int idxLM = (bi + i) * N + bk + k;
+	// 						register int idxM = (bk + k) * N + bj + j;
+	// 						R[idxR] += LM[idxLM] * M[idxM];
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+
     return R;
 }
 
@@ -108,6 +143,25 @@ double* multiply_normal_with_upper(int N, double *M, double *UM) {
 			R[i * N + j] = r;
         }
     }
+
+	// int blockSize = 40;
+
+	// for (int bi = 0; bi < N; bi += blockSize) {
+	// 	for (int bj = 0; bj < N; bj += blockSize) {
+	// 		for (int bk = 0; bk < N; bk += blockSize) {
+	// 			for (int i = 0; i < blockSize; i++) {
+	// 				for (int j = 0; j < blockSize; j++) {
+	// 					for (int k = 0; k < blockSize; k++) {
+	// 						register int idxR = (bi + i) * N + bj + j;
+	// 						register int idxM = (bi + i) * N + bk + k;
+	// 						register int idxUM = (bk + k) * N + bj + j;
+	// 						R[idxR] += M[idxM] * UM[idxUM];
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
 
   	return R;
 }
