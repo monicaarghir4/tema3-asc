@@ -1,18 +1,21 @@
 /*
- * Tema 2 ASC
+ * Tema 3 ASC
  * 2024 Spring
  */
 #include "utils.h"
 
 double* transpose(int N, double *M) {
     double *T = (double*)malloc(N * N * sizeof(double));
+
     if (T == NULL) {
         return NULL;
     }
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            T[i * N + j] = M[j * N + i];
+			register int idx1 = i * N + j;
+			register int idx2 = j * N + i;
+            T[idx1] = M[idx2];
         }
     }
 
@@ -21,13 +24,15 @@ double* transpose(int N, double *M) {
 
 double* sum(int N, double *M1, double *M2) {
     double *R = (double*)malloc(N * N * sizeof(double));
+
     if (R == NULL) {
         return NULL;
     }
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            R[i * N + j] = M1[i * N + j] + M2[i * N + j];
+			register int idx = i * N + j;
+            R[idx] = M1[idx] + M2[idx];
         }
     }
 
