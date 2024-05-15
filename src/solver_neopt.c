@@ -1,12 +1,12 @@
 /*
- * Tema 2 ASC
+ * Tema 3 ASC
  * 2024 Spring
  */
 #include "utils.h"
-// #include "func_neopt.h"
 
 double* transpose(int N, double *M) {
     double *T = (double*)malloc(N * N * sizeof(double));
+
     if (T == NULL) {
         return NULL;
     }
@@ -22,6 +22,7 @@ double* transpose(int N, double *M) {
 
 double* sum(int N, double *M1, double *M2) {
     double *R = (double*)malloc(N * N * sizeof(double));
+
     if (R == NULL) {
         return NULL;
     }
@@ -37,6 +38,7 @@ double* sum(int N, double *M1, double *M2) {
 
 double* multiply_normal(int N, double *M1, double *M2) {
     double *R = (double*)malloc(N * N * sizeof(double));
+
     if (R == NULL) {
         return NULL;
     }
@@ -55,6 +57,7 @@ double* multiply_normal(int N, double *M1, double *M2) {
 
 double* multiply_lower_with_normal(int N, double *LM, double *M) {
     double *R = (double*)malloc(N * N * sizeof(double));
+    
     if (R == NULL) {
         return NULL;
     }

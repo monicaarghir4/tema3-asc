@@ -1,5 +1,5 @@
 /*
- * Tema 2 ASC
+ * Tema 3 ASC
  * 2024 Spring
  */
 #include "utils.h"
@@ -42,5 +42,6 @@ double* my_solver(int N, double *A, double *B) {
 
 	free(first_calc);
 	free(second_calc);
+	
 	return C;
 }
